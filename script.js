@@ -11,6 +11,7 @@ let isInitialLoad = true;
 let initialCount = 5;
 const collections = 'current-events';
 const apiKey = 'crfAYpjYI5aW9magkSYktydG_jVQzZqKqcH3egLVWdk';
+const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 let apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${initialCount}&collections=${collections}`;
 
 // UPDATE API URL WITH NEW COUNT
@@ -71,7 +72,7 @@ function displayPhotos(){
 // GET PHOTOS FROM UNSPLASH API
 async function getPhotos(){
     try{
-        const response = await fetch(apiUrl);
+        const response = await fetch(proxyUrl + apiUrl);
         photosArray = await response.json();
 
         displayPhotos();
